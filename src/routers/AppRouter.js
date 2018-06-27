@@ -1,26 +1,31 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink,  } from 'react-router-dom';
+import { Router, Route, Switch, Link, NavLink,  } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import expenseDashboardPage from '../components/expenseDashboardPage';
 import addExpensePage from '../components/addExpensePage';
 import editExpensePage from '../components/editExpensePage';
-import helpPage from '../components/helpPage';
 import notFoundPage from '../components/notFoundPage';
-import Header from '../components/Header';
+import LoginPage from '../components/loginPage';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+
+// exporting for page redirects outside the components and not associted with routes.
+export const history = createHistory();
 
 const AppRouter = () => (
 
-    <BrowserRouter>
+    // we could also have used 'BrowserRouter' but that doesn't allow passing history manually to components/routes.
+    <Router history={history}>
         <div>
-            <Header />
             <Switch>
-                <Route path="/" component={expenseDashboardPage} exact={true} />
-                <Route path="/create" component={addExpensePage} />
-                <Route path="/edit/:id" component={editExpensePage} />
-                <Route path="/help" component={helpPage} />
+                <PublicRoute path="/" component={LoginPage} exact={true} />
+                <PrivateRoute path="/dashboard" component={expenseDashboardPage} />
+                <PrivateRoute path="/create" component={addExpensePage} />
+                <PrivateRoute path="/edit/:id" component={editExpensePage} />
                 <Route component={notFoundPage} />
             </Switch>
         </div>
-    </BrowserRouter>
+    </Router>
 
 );
 
