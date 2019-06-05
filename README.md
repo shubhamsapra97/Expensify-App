@@ -19,5 +19,6 @@ This project is a dynamic React.js application. It is built using **React.js**, 
 
 1. Clone the repo or download the zip file.
 2. Install the application using command:  `npm install`
-3. Start your server:  `node server/server.js`
-4. View in browser at  `http://localhost:5000`
+3. Build the app on dev using `npm run build:dev`
+4. Start your server:  `node server/server.js`
+5. View in browser at  `http://localhost:5000`
