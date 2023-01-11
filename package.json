@@ -29,7 +29,7 @@
     "firebase": "^5.0.4",
     "history": "^4.7.2",
     "jest": "^23.1.0",
-    "live-server": "^1.2.0",
+    "live-server": "^1.2.2",
     "moment": "^2.22.2",
     "node-sass": "^4.9.0",
     "normalize.css": "7.0.0",
